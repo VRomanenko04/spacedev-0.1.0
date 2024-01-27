@@ -1,0 +1,12 @@
+.about_social {
+    display: flex;
+    align-items: center;
+
+    img {
+        margin-right: 15px;
+
+        &:hover {
+            scale: 1.07;
+        }
+    }
+}
