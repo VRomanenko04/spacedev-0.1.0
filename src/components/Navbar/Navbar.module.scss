@@ -1,3 +1,5 @@
+@import '../../styles/var.scss';
+
 .container {
     height: 80px;
     display: flex;
@@ -5,22 +7,25 @@
     justify-content: space-between;
     padding: 0 150px;
     background-color: #060606;
+    font-family: $fontIndivisible;
 }
 
 .right_side {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 35px;
+    gap: 40px;
 }
 
 .links {
     display: flex;
-    gap: 30px;
+    gap: 35px;
 
     .link {
         color: #fff;
         text-decoration: none;
+        font-weight: 400;
+        font-size: 18px;
     }
 }
 
