@@ -1,0 +1,32 @@
+@import '../../../styles/var.scss';
+
+.container {
+    margin-left: 100px;
+    gap: 25px;
+    display: flex;
+}
+
+.bar {
+    width: 6px;
+    height: 130px;
+    border-radius: 3px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #FFF 100%);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h2 {
+        font-family: $fontIndivisible;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-family: $fontInconsolata;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.2em;
+    }
+}
