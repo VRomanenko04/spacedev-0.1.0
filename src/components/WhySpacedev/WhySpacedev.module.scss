@@ -1,0 +1,21 @@
+@import '../../styles/var.scss';
+
+.container {
+    height: 100vh;
+    background-color: $background;
+    display: flex;
+    align-items: center;
+}
+
+.info__block {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    .title {
+        margin-left: 120px;
+        font-family: $fontIndivisible;
+        font-size: 36px;
+        color: #fff;
+    }
+}
