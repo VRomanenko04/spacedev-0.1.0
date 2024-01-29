@@ -6,7 +6,7 @@ import TextParagraph from '../UI/TextParagraph/TextParagraph';
 
 const HomeHeader = () => {
     return (
-        <div className={styles.container}>
+        <section className={styles.container}>
             <div className={styles.content}>
                 <h1 className={styles.small__title}>&lt;start your way in coding by playing/&gt;</h1>
                 <h1 className={styles.title}>SPACEDEV</h1>
@@ -29,7 +29,7 @@ const HomeHeader = () => {
                 text='<h3>SpaceDev is a unique educational space where programming becomes an exciting adventure.<br/> 
                 We offer innovative, game-based programming courses that immerse students in the exciting worlds of code and technology.</h3>'
             />
-        </div>
+        </section>
     )
 }
 
