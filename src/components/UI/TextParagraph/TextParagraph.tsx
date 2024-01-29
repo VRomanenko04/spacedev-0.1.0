@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './TextParagraph.module.scss';
 import { motion, useInView } from 'framer-motion';
 
@@ -11,18 +11,25 @@ type TextProps = {
 const TextParagraph = (props: TextProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref);
+    const [hasAnimated, setHasAnimated] = useState(false);
 
     const variants = {
-        hidden: { height: 0 },
-        visible: { height: 130 }
+        hidden: { y: 100, opacity: 0 },
+        visible: { y: 0, opacity: 1 }
     };
+
+    useEffect(() => {
+        if (isInView && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [isInView]);
 
     return (
         <div className={styles.container}>
             <motion.div 
                 ref={ref}
                 className={`${styles.bar}`}
-                animate={isInView ? 'visible' : 'hidden'}
+                animate={hasAnimated ? 'visible' : 'hidden'}
                 variants={variants}
                 transition={{ duration: 0.5 }}
             ></motion.div>
