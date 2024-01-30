@@ -1,0 +1,17 @@
+@import '../../../styles/var.scss';
+
+.container {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #060606;
+    color: #fff;
+    gap: 45px;
+
+    h6 {
+        font-family: $fontInconsolata;
+        font-size: 16px;
+    }
+}
