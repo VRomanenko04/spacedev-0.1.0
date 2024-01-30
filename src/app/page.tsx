@@ -1,4 +1,5 @@
 import HomeHeader from "@/components/HomeHeader/HomeHeader";
+import HomePlans from "@/components/HomePlans/HomePlans";
 import WhySpacedev from "@/components/WhySpacedev/WhySpacedev";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       </header>
       <main>
         <WhySpacedev />
+        <HomePlans />
       </main>
     </>
   );
