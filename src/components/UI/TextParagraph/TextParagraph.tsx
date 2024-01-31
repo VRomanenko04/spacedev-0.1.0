@@ -14,7 +14,7 @@ const TextParagraph = (props: TextProps) => {
     const [hasAnimated, setHasAnimated] = useState(false);
 
     const variants = {
-        hidden: { y: 100, opacity: 0 },
+        hidden: { y: 50, opacity: 0 },
         visible: { y: 0, opacity: 1 }
     };
 
@@ -31,7 +31,7 @@ const TextParagraph = (props: TextProps) => {
                 className={`${styles.bar}`}
                 animate={hasAnimated ? 'visible' : 'hidden'}
                 variants={variants}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
             ></motion.div>
             <div className={styles.content}>
                 <h2>{props.title}</h2>
