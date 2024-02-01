@@ -1,3 +1,4 @@
+import GamePreview from "@/components/GamePreview/GamePreview";
 import HomeHeader from "@/components/HomeHeader/HomeHeader";
 import HomePlans from "@/components/HomePlans/HomePlans";
 import Footer from "@/components/UI/Footer/Footer";
@@ -10,6 +11,7 @@ const Home = () => {
         <HomeHeader />
       </header>
       <main>
+        <GamePreview />
         <WhySpacedev />
         <HomePlans />
       </main>
