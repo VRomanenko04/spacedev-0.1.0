@@ -33,10 +33,16 @@ const TextParagraph = (props: TextProps) => {
                 variants={variants}
                 transition={{ duration: 0.5, delay: 0.15 }}
             ></motion.div>
-            <div className={styles.content}>
+            <motion.div 
+                className={styles.content}
+                ref={ref}
+                animate={hasAnimated ? 'visible' : 'hidden'}
+                variants={variants}
+                transition={{ duration: 0.5, delay: 0.25 }}
+            >
                 <h2>{props.title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: props.text }} />
-            </div>
+            </motion.div>
         </div>
     )
 }
