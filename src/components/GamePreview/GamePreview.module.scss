@@ -1,0 +1,22 @@
+@import '../../styles/var.scss';
+
+.container {
+    width: 100%;
+    padding-top: 350px;
+    padding-bottom: 200px;
+    background-color: $background;
+}
+
+.top__location,
+.bottom__location {
+    width: 100%;
+    height: auto;
+}
+
+.bottom__location {
+    transform: rotate(180deg);
+}
+
+.preview__container {
+    height: 550px;
+}
