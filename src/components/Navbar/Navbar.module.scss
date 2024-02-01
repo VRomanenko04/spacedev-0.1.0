@@ -1,12 +1,18 @@
 @import '../../styles/var.scss';
 
+.wrapper {
+    background-color: #060606;
+    display: flex;
+    justify-content: center;
+}
+
 .container {
+    width: 2000px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 150px;
-    background-color: #060606;
     font-family: $fontIndivisible;
 }
 
