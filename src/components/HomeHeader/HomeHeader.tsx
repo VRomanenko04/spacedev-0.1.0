@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './HomeHeader.module.scss';
-import Button from '../UI/Button/Button';
 import SocialIcons from '../UI/SocialIcons/SocialIcons';
 import TextParagraph from '../UI/TextParagraph/TextParagraph';
+import LinkButton from '../UI/LinkButton/LinkButton';
 
 const HomeHeader = () => {
     return (
@@ -12,13 +12,15 @@ const HomeHeader = () => {
                     <h1 className={styles.small__title}>&lt;start your way in coding by playing/&gt;</h1>
                     <h1 className={styles.title}>SPACEDEV</h1>
                     <div className={styles.btns}>
-                        <Button 
-                            buttonText='Log in' 
+                        <LinkButton
+                            linkText='Log in' 
+                            linkHref='/auth/login'
                             extraClass={styles.login__btn} 
                             textAnimateClass={styles.login__hover}
                         />
-                        <Button 
-                            buttonText='Register' 
+                        <LinkButton 
+                            linkText='Register' 
+                            linkHref='/auth/register'
                             extraClass={styles.register__btn} 
                             textAnimateClass={styles.register__hover}
                         />
