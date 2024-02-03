@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Login.module.scss';
 import Button from '@/components/UI/Button/Button';
 import Link from 'next/link';
+import Input from '@/components/Input/Input';
 
 const LoginPage = () => {
     return (
@@ -10,14 +11,8 @@ const LoginPage = () => {
                 <h1 className={styles.title}>Log in</h1>
                 <form className={styles.form}>
                     <div>
-                        <label>
-                            <p className={styles.label__text}>Email</p>
-                            <input className={styles.input} type="text" />
-                        </label>
-                        <label>
-                            <p className={styles.label__text}>Password</p>
-                            <input className={styles.input} type="text" />
-                        </label>
+                        <Input type='email' labetText='Email'/>
+                        <Input type='password' labetText='Password'/>
                     </div>
                     <Button buttonText='Submit' extraClass={styles.btn}/>
                 </form>
