@@ -28,30 +28,6 @@
     margin-bottom: 40px;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 110px;
-
-    div {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-}
-
-.btn {
-    background: #2374bd;
-    height: 50px;
-    border-radius: 6px;
-
-    p {
-        color: #fff;
-        font-size: 18px;
-        font-weight: 600;
-    }
-}
-
 .no__acc {
     margin-top: 15px;
     display: flex;
