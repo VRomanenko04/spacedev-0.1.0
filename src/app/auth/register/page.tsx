@@ -12,7 +12,7 @@ const RegisterPage = () => {
                 <RegisterForm />
                 <div className={styles.no__acc}>
                     <p>Already have account?</p>
-                    <Link className={styles.link} href='/auth/register'>Log in</Link>
+                    <Link className={styles.link} href='/auth/login'>Log in</Link>
                 </div>
             </div>
         </main>
