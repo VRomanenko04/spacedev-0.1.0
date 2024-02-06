@@ -1,0 +1,40 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 110px;
+}
+
+.top__block {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
+
+    .avatar {
+        border-radius: 12px;
+        width: 160px;
+        height: 160px;
+        background: #686868;
+        margin-right: 70px;
+        cursor: pointer;
+    }
+}
+
+.inputs__position {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.btn {
+    width: 100%;
+    background: #2374bd;
+    height: 50px;
+    border-radius: 6px;
+
+    p {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
