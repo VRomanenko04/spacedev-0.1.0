@@ -7,6 +7,7 @@ type InputProps = {
     labetText?: string
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     value: string
+    isShort?: boolean
 }
 
 const Input = (props: InputProps) => {
@@ -14,7 +15,7 @@ const Input = (props: InputProps) => {
         <label>
             <p className={styles.label__text}>{props.labetText}</p>
             <input 
-                className={styles.input} 
+                className={props.isShort ? `${styles.input__short}` : `${styles.input}`} 
                 type={props.type} 
                 id={props.inputId} 
                 value={props.value}

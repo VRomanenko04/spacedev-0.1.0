@@ -12,7 +12,20 @@
     background: #686868;
     font-size: 22px;
     padding: 0 5px;
+}
 
+.input__short {
+    width: 260px;
+    height: 50px;
+    border: none;
+    border-radius: 6px;
+    background: #686868;
+    font-size: 22px;
+    padding: 0 5px;
+}
+
+.input__short,
+.input {
     &:focus {
         outline: 1px solid #fff;
         caret-color: #fff;
