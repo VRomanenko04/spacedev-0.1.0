@@ -6,5 +6,5 @@ export const LoginUser = async (email: string, password: string) => {
         .then(({user}) => {
             console.log(user);
         })
-        .catch(() => alert('The email or password was entered incorrectly. Try again please.'));
+        .catch((err) => alert(`The email or password was entered incorrectly. Try again please. error: ${err}`));
 }
