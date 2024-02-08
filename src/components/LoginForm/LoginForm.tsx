@@ -1,9 +1,9 @@
 'use client'
-
 import React, { useState } from 'react'
 import Input from '../Input/Input'
 import Button from '../UI/Button/Button'
 import styles from './LoginForm.module.scss';
+import { LoginUser } from '@/services/LoginService';
 
 
 const LoginForm = () => {
@@ -15,6 +15,7 @@ const LoginForm = () => {
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(loginData);
+        LoginUser(loginData.email, loginData.email);
 
         setLoginData({
             email: '',
