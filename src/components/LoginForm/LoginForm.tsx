@@ -15,7 +15,7 @@ const LoginForm = () => {
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(loginData);
-        LoginUser(loginData.email, loginData.email);
+        LoginUser(loginData.email, loginData.password);
 
         setLoginData({
             email: '',
