@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
 import Navbar from "@/components/Navbar/Navbar";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "SpaceDev",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <StoreProvider>
+          <Navbar />
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
