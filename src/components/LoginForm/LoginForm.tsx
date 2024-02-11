@@ -4,9 +4,11 @@ import Input from '../Input/Input'
 import Button from '../UI/Button/Button'
 import styles from './LoginForm.module.scss';
 import { LoginUser } from '@/services/LoginService';
+import { useDispatch } from 'react-redux';
 
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
@@ -15,7 +17,7 @@ const LoginForm = () => {
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(loginData);
-        LoginUser(loginData.email, loginData.password);
+        LoginUser(dispatch, loginData.email, loginData.password);
 
         setLoginData({
             email: '',
