@@ -5,6 +5,7 @@ import styles from './RegisterForm.module.scss';
 import Input from '../Input/Input';
 import Button from '../UI/Button/Button';
 import { RegisterUser } from '@/services/RegisterService';
+import { useDispatch } from 'react-redux';
 
 
 const RegisterForm = () => {
@@ -14,11 +15,13 @@ const RegisterForm = () => {
         password: '',
         confPassword: ''
     });
+    
+    const dispatch = useDispatch();
 
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(registerData);
-        RegisterUser(registerData.email, registerData.password);
+        RegisterUser(dispatch, registerData.email, registerData.password);
 
         setRegisterData({
             username: '',
