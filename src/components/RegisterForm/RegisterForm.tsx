@@ -1,46 +1,26 @@
 'use client'
-
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './RegisterForm.module.scss';
 import Input from '../Input/Input';
 import Button from '../UI/Button/Button';
-import { RegisterUser } from '@/services/RegisterService';
-import { useDispatch } from 'react-redux';
+import useRegisterForm from '@/hooks/RegisterForm.hook';
+import { validate } from './RegisterFormValidate';
 
+const INITIAL_STATE = {
+    username: '',
+    email: '',
+    password: '',
+    confPassword: ''
+};
 
 const RegisterForm = () => {
-    const [registerData, setRegisterData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        confPassword: ''
-    });
-    
-    const dispatch = useDispatch();
-
-    const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(registerData);
-        RegisterUser(dispatch, registerData.email, registerData.password);
-
-        setRegisterData({
-            username: '',
-            email: '',
-            password: '',
-            confPassword: ''
-        });
-    }
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { id, value } = e.target;
-        setRegisterData({
-            ...registerData,
-            [id]: value
-        });
-    }
+    const { handleChange, handleSubmit, values, errors } = useRegisterForm(
+        INITIAL_STATE,
+        validate
+    );
 
     return (
-        <form onSubmit={handleForm} className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.top__block}>
                 <div className={styles.avatar}></div>
                 <div className={styles.inputs__position}>
@@ -49,7 +29,7 @@ const RegisterForm = () => {
                         labetText='Username'
                         inputId='username'
                         handleChange={handleChange}
-                        value={registerData.username}
+                        value={values.username}
                         isShort
                     />
                     <Input 
@@ -57,7 +37,7 @@ const RegisterForm = () => {
                         labetText='Password'
                         inputId='password'
                         handleChange={handleChange}
-                        value={registerData.password}
+                        value={values.password}
                         isShort
                     />
                 </div>
@@ -67,14 +47,14 @@ const RegisterForm = () => {
                         labetText='Email'
                         inputId='email'
                         handleChange={handleChange}
-                        value={registerData.email}
+                        value={values.email}
                     />
                     <Input 
                         type='password'
                         labetText='Confirm password '
                         inputId='confPassword'
                         handleChange={handleChange}
-                        value={registerData.confPassword}
+                        value={values.confPassword}
                     />
                 </div>
             </div>
