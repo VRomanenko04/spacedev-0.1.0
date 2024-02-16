@@ -19,7 +19,7 @@ export interface FormErrors {
 
 type ValidateFunction = (values: FormValues) => FormErrors;
 
-const useRegisterForm = (initialState: FormValues, validate: ValidateFunction) => {
+const useRegisterForm = (initialState: FormValues, validateRegister: ValidateFunction) => {
     const [values, setValues] = useState<FormValues>(initialState);
     const [errors, setErrors] = useState<FormErrors>({});
 
@@ -34,7 +34,7 @@ const useRegisterForm = (initialState: FormValues, validate: ValidateFunction) =
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const validationErrors = validate(values);
+        const validationErrors = validateRegister(values);
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
             console.log('Values are valid!');
