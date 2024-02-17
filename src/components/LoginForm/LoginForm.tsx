@@ -6,8 +6,12 @@ import styles from './LoginForm.module.scss';
 import { LoginUser } from '@/services/LoginService';
 import { useDispatch } from 'react-redux';
 
+type AlertFormProps = {
+    showModal: () => void
+    setIsConformed: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const LoginForm = () => {
+const LoginForm = ({ showModal, setIsConformed }: AlertFormProps) => {
     const dispatch = useDispatch();
     const [loginData, setLoginData] = useState({
         email: '',
@@ -17,11 +21,13 @@ const LoginForm = () => {
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(loginData);
-        LoginUser(dispatch, loginData.email, loginData.password);
-
-        setLoginData({
-            email: '',
-            password: ''
+        LoginUser(dispatch, loginData.email, loginData.password, setIsConformed)
+        .then(() => {
+            showModal();
+            setLoginData({
+                email: '',
+                password: ''
+            })
         })
     }
 
