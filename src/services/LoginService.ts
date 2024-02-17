@@ -11,9 +11,8 @@ export const LoginUser = async (dispatch: Dispatch<any>, email: string, password
             // После успешного входа, диспетчеризуем действие userAuth с передачей true в качестве payload
             dispatch(userAuthActions.userAuth(true));
         })
-        .catch((err) => {
+        .catch((err: any) => {
+            console.log(`Error: ${err}`)
             setIsConformed(false);
         });
 }
-
-// The email or password was entered incorrectly. Try again please.
