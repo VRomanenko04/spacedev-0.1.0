@@ -5,6 +5,7 @@ import Input from '../Input/Input';
 import Button from '../UI/Button/Button';
 import useRegisterForm from '@/hooks/RegisterForm.hook';
 import { validateRegister } from './RegisterFormValidate';
+import { AlertFormProps } from '../LoginForm/LoginForm';
 
 const INITIAL_STATE = {
     username: '',
@@ -13,10 +14,12 @@ const INITIAL_STATE = {
     confPassword: ''
 };
 
-const RegisterForm = () => {
+const RegisterForm = ({ showModal, setIsConformed }: AlertFormProps) => {
     const { handleChange, handleSubmit, values, errors } = useRegisterForm(
         INITIAL_STATE,
-        validateRegister
+        validateRegister,
+        showModal,
+        setIsConformed
     );
 
     return (
