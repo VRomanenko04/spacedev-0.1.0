@@ -6,7 +6,7 @@ import styles from './LoginForm.module.scss';
 import { LoginUser } from '@/services/LoginService';
 import { useDispatch } from 'react-redux';
 
-type AlertFormProps = {
+export type AlertFormProps = {
     showModal: () => void
     setIsConformed: React.Dispatch<React.SetStateAction<boolean>>
 }
