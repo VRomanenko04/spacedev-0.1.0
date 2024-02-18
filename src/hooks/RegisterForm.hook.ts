@@ -19,7 +19,12 @@ export interface FormErrors {
 
 type ValidateFunction = (values: FormValues) => FormErrors;
 
-const useRegisterForm = (initialState: FormValues, validateRegister: ValidateFunction) => {
+const useRegisterForm = (
+    initialState: FormValues, 
+    validateRegister: ValidateFunction,
+    showModal: () => void,
+    setIsConformed: React.Dispatch<React.SetStateAction<boolean>>
+    ) => {
     const [values, setValues] = useState<FormValues>(initialState);
     const [errors, setErrors] = useState<FormErrors>({});
 
@@ -38,7 +43,10 @@ const useRegisterForm = (initialState: FormValues, validateRegister: ValidateFun
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
             console.log('Values are valid!');
-            RegisterUser(dispatch, values.email, values.password);
+            RegisterUser(dispatch, values.email, values.password, setIsConformed)
+                .then(() => {
+                    showModal();
+                })
             setValues(initialState);
         } else {
             console.log('Data is invalid');
