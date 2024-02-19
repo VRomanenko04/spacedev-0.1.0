@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './WhySpacedev.module.scss';
-import Image from 'next/image';
-import Moonwalker from '../../assets/moonwalker.png';
 import TextParagraph from '../UI/TextParagraph/TextParagraph';
-
+import Canvas3D from '../Canvas3D/Canvas3D';
 
 const WhySpacedev = () => {
     return (
         <section className={styles.container}>
-            <div className={styles.img__block}>
-                <Image src={Moonwalker} alt='Moonwalker'/>
+            <div className={styles.model__block}>
+                <Canvas3D />
             </div>
             <div className={styles.info__block}>
                 <h2 className={styles.title}>Why you should choose - SPACEDEV?</h2>
