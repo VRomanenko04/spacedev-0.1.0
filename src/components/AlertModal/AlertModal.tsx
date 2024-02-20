@@ -24,13 +24,13 @@ const AlertModal = ({ messageHead, messageText, isConfirmed, isVisible }: IAlert
                     <motion.div
                         className={isConfirmed ? confirmContainer : errorContainer}
                         initial={{ y: 0 }}
-                        animate={{ y: 200 }}
-                        exit={{ y: 0 }}
+                        animate={{ y: 300 }}
+                        exit={{ opacity: 0 }}
                         transition={{
                             duration: 0.5,
                             ease: 'easeInOut',
                             type: "spring",
-                            stiffness: '80'
+                            stiffness: '50'
                         }}
                     >
                         {!isConfirmed ? (
