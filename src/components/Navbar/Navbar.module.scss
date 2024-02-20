@@ -4,6 +4,11 @@
     background-color: #060606;
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
 }
 
 .container {
@@ -14,6 +19,7 @@
     justify-content: space-between;
     padding: 0 150px;
     font-family: $fontIndivisible;
+    z-index: 2;
 }
 
 .right_side {
