@@ -43,7 +43,7 @@ const useRegisterForm = (
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
             console.log('Values are valid!');
-            RegisterUser(dispatch, values.email, values.password, setIsConformed)
+            RegisterUser(dispatch, values.email, values.username, values.password, setIsConformed)
                 .then(() => {
                     showModal();
                 })
