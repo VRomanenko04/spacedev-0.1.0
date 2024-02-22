@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../lib/redux/store';
 import { initializeIsUserAuth } from '@/lib/redux/features/UserAuth.slice';
+import '../lib/firebase/firebase';
 
 export default function StoreProvider({ children }: {children : React.ReactNode}) {
 
