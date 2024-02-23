@@ -2,7 +2,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase/firebase';
 import { Dispatch } from '@reduxjs/toolkit';
 import { actions as userAuthActions } from '../lib/redux/features/UserAuth.slice';
-import { get, getDatabase, ref, set } from 'firebase/database';
+import { get, getDatabase, ref } from 'firebase/database';
+import { postUserData } from './PostData';
 
 // Регистрация
 export const RegisterUser = async (dispatch:  Dispatch<any>, email: string, username: string, password: string, setIsConformed:React.Dispatch<React.SetStateAction<boolean>>) => {
@@ -22,7 +23,6 @@ export const RegisterUser = async (dispatch:  Dispatch<any>, email: string, user
 // Добавление пользователя в базу данных
 export const RegisterUserToDB = async (uid: string, username: string, email: string) => {
     const database = getDatabase();
-    const userRef = ref(database, 'users/' + uid);
     const allUsersRef = ref(database, 'users');
     let numChildren = 0;
 
@@ -46,5 +46,5 @@ export const RegisterUserToDB = async (uid: string, username: string, email: str
             userId: numChildren + 1
         };
 
-        await set(userRef, userData);
+        postUserData(uid, userData);
 }
