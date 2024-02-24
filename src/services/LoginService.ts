@@ -9,7 +9,7 @@ export const LoginUser = async (dispatch: Dispatch<any>, email: string, password
             console.log(user);
             setIsConformed(true);
             // После успешного входа, диспетчеризуем действие userAuth с передачей true в качестве payload
-            dispatch(userAuthActions.userAuth(true));
+            dispatch(userAuthActions.userAuth({ isAuthenticated: true, uid: user.uid }));
         })
         .catch((err: any) => {
             console.log(`Error: ${err}`)

@@ -11,7 +11,7 @@ export const RegisterUser = async (dispatch:  Dispatch<any>, email: string, user
     .then(({ user }) => {
         setIsConformed(true);
         // После успешной регистрации, диспетчеризуем действие userAuth с передачей true в качестве payload
-        dispatch(userAuthActions.userAuth(true));
+        dispatch(userAuthActions.userAuth({ isAuthenticated: true, uid: user.uid }));
         RegisterUserToDB(user.uid, username, email)
     }).catch((err: any) => {
         console.log(`Register error: ${err}`);
