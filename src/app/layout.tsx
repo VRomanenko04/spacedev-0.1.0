@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
 import Navbar from "@/components/Navbar/Navbar";
+import InitializeApp from "./InitializeApp";
 import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
@@ -17,8 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StoreProvider>
-          <Navbar />
-          {children}
+          <InitializeApp>
+            <Navbar />
+            {children}
+          </InitializeApp>
         </StoreProvider>
       </body>
     </html>
