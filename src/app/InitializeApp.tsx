@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, store } from '../lib/redux/store';
+import { RootState } from '../lib/redux/store';
 import { initializeIsUserAuth } from '@/lib/redux/features/UserAuth.slice';
 import '../lib/firebase/firebase';
 import { initializeUserData } from '@/lib/redux/features/UserData.slice';
