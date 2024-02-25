@@ -1,0 +1,28 @@
+@import '../../../styles/var.scss';
+
+.wrapper {
+    background-color: $background;
+    color: #fff;
+    font-family: $fontIndivisible;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 0 80px;
+    padding-top: 200px;
+    padding-bottom: 200px;
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+}
+
+.left_side {
+    flex: 2;
+}
+
+.right_side {
+    flex: 1;
+}
