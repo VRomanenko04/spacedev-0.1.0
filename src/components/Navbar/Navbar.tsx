@@ -9,6 +9,7 @@ import { RootState } from '@/lib/redux/store';
 
 const Navbar = () => {
     const isAuth = useSelector((state: RootState) => state.authReducer.isAuthenticated);
+    const username = useSelector((state: RootState) => state.userDataReducer.username);
 
     return (
         <div className={styles.wrapper}>
@@ -24,10 +25,12 @@ const Navbar = () => {
                                 <li><Link className={styles.link} href='/account'>account</Link></li>
                             </ul>
                         </nav>
-                        <div className={styles.avatar}></div>
+                        <div className={styles.user_side}>
+                            <p className={styles.username}>{username}</p>
+                            <div className={styles.avatar}></div>
+                        </div>
                     </div>
                 )}
-                
             </div>
         </div>
     )
