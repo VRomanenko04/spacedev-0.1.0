@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './AccountPage.module.scss';
 import AccountPlanView from '@/components/AccountPlanView/AccountPlanView';
+import AccountProfileBlock from '@/components/AccountProfileBlock/AccountProfileBlock';
 
 
 const Account = () => {
@@ -12,7 +13,7 @@ const Account = () => {
                     <AccountPlanView />
                 </div>
                 <div className={styles.right_side}>
-
+                    <AccountProfileBlock />
                 </div>
             </section>
         </main>
