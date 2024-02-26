@@ -1,0 +1,49 @@
+.container {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.title__container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .title {
+        font-size: 32px;
+    }
+}
+
+.userinfo__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 10px;
+
+    .username {
+        font-size: 16px;
+    
+        strong {
+            font-size: 20px;
+        }
+    }
+}
+
+.edit {
+    cursor: pointer;
+
+    .pen {
+        padding-left: 2px;
+    }
+}
+
+
+
+.avatar {
+    height: 100px;
+    width: 100px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+}
