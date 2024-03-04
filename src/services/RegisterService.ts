@@ -4,16 +4,23 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { actions as userAuthActions } from '../lib/redux/features/UserAuth.slice';
 import { get, getDatabase, ref } from 'firebase/database';
 import { postUserData } from './PostData';
+import { initializeApp } from '@/app/InitializeApp';
 
 // Регистрация
 export const RegisterUser = async (dispatch:  Dispatch<any>, email: string, username: string, password: string, setIsConformed:React.Dispatch<React.SetStateAction<boolean>>) => {
     await createUserWithEmailAndPassword(auth, email, password)
     .then(({ user }) => {
+        RegisterUserToDB(user.uid, username, email);
         setIsConformed(true);
-        // После успешной регистрации, диспетчеризуем действие userAuth с передачей true в качестве payload
-        dispatch(userAuthActions.userAuth({ isAuthenticated: true, uid: user.uid }));
-        RegisterUserToDB(user.uid, username, email)
-    }).catch((err: any) => {
+        
+        setTimeout(() => {
+            // После успешной регистрации, диспетчеризуем действие userAuth с передачей true в качестве payload
+            dispatch(userAuthActions.userAuth({ isAuthenticated: true, uid: user.uid }));
+            // Добавляем вызов инициализации приложения после успешной регистрации
+            initializeApp(dispatch, { isAuthenticated: true, uid: user.uid });
+        }, 400);
+    })
+    .catch((err: any) => {
         console.log(`Register error: ${err}`);
         setIsConformed(false);
     })
@@ -40,11 +47,11 @@ export const RegisterUserToDB = async (uid: string, username: string, email: str
             console.error("Ошибка при получении данных: " + error);
         });
     
-        const userData = {
-            username: username,
-            email: email,
-            userId: numChildren + 1
-        };
+    const userData = {
+        username: username,
+        email: email,
+        userId: numChildren + 1
+    };
 
-        postUserData(uid, userData);
+    postUserData(uid, userData);
 }
