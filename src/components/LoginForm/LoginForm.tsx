@@ -4,7 +4,9 @@ import Input from '../Input/Input'
 import Button from '../UI/Button/Button'
 import styles from './LoginForm.module.scss';
 import { LoginUser } from '@/services/LoginService';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { RootState } from '@/lib/redux/store';
 
 export type AlertFormProps = {
     showModal: () => void
@@ -17,6 +19,15 @@ const LoginForm = ({ showModal, setIsConformed }: AlertFormProps) => {
         email: '',
         password: ''
     })
+
+    // redirect если user auth
+    const isAuth = useSelector((state: RootState) => state.authReducer.isAuthenticated);
+    const router = useRouter();
+    if(isAuth) {
+        setTimeout(() => {
+            router.push('/account');
+        }, 1500)
+    } 
 
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

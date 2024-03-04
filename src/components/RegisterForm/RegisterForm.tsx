@@ -1,11 +1,14 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './RegisterForm.module.scss';
 import Input from '../Input/Input';
 import Button from '../UI/Button/Button';
 import useRegisterForm from '@/hooks/RegisterForm.hook';
 import { validateRegister } from './RegisterFormValidate';
 import { AlertFormProps } from '../LoginForm/LoginForm';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/lib/redux/store';
+import { useRouter } from 'next/navigation';
 
 const INITIAL_STATE = {
     username: '',
@@ -21,6 +24,15 @@ const RegisterForm = ({ showModal, setIsConformed }: AlertFormProps) => {
         showModal,
         setIsConformed
     );
+
+    // redirect если user auth
+    const isAuth = useSelector((state: RootState) => state.authReducer.isAuthenticated);
+    const router = useRouter();
+    if(isAuth) {
+        setTimeout(() => {
+            router.push('/account');
+        }, 1500)
+    } 
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
