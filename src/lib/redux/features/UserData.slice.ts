@@ -49,12 +49,16 @@ export const initializeUserData = async (uid: string | null) => {
         if (uid) {
             const fetchedUserData = await getUserData(uid);
 
-            const { email, username, userId } = fetchedUserData;
-            const userData = { email, username, userId };
+            if (fetchedUserData) {
+                const { email, username, userId } = fetchedUserData;
+                const userData = { email, username, userId };
 
-            return userDataSlice.actions.setUserData(userData);
+                return userDataSlice.actions.setUserData(userData);
+            } else {
+                return null;
+            }
         } else {
-            return null
+            return null;
         }
     }
 }
