@@ -13,12 +13,15 @@ export const RegisterUser = async (dispatch:  Dispatch<any>, email: string, user
         RegisterUserToDB(user.uid, username, email);
         setIsConformed(true);
         
+        return { user };
+    })
+    .then(({ user }) => {
         setTimeout(() => {
-            // После успешной регистрации, диспетчеризуем действие userAuth с передачей true в качестве payload
-            dispatch(userAuthActions.userAuth({ isAuthenticated: true, uid: user.uid }));
-            // Добавляем вызов инициализации приложения после успешной регистрации
-            initializeApp(dispatch, { isAuthenticated: true, uid: user.uid });
-        }, 400);
+        // После успешной регистрации, диспетчеризуем действие userAuth с передачей true в качестве payload
+        dispatch(userAuthActions.userAuth({ isAuthenticated: true, uid: user.uid }));
+        // Добавляем вызов инициализации приложения после успешной регистрации
+        initializeApp(dispatch, { isAuthenticated: true, uid: user.uid });
+        }, 500);
     })
     .catch((err: any) => {
         console.log(`Register error: ${err}`);
