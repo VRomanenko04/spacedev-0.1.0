@@ -35,7 +35,6 @@ const LoginPage = () => {
             <AlertModal 
                 isConfirmed={isConfirmed} 
                 messageHead={isConfirmed ? 'Login Confirmed!' : 'Login Error!'} 
-                messageText={isConfirmed ? '' : 'Check your details are correct, please'}
                 isVisible={isVisible}
             />
         </main>

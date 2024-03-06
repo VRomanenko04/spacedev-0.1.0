@@ -35,7 +35,6 @@ const RegisterPage = () => {
             <AlertModal 
                 isConfirmed={isConfirmed} 
                 messageHead={isConfirmed ? 'Registration Confirmed!' : 'Registration Error!'} 
-                messageText={isConfirmed ? '' : 'Try again later, please'}
                 isVisible={isVisible}
             />
         </main>
