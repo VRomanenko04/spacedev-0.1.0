@@ -13,10 +13,15 @@ const TextParagraph = (props: TextProps) => {
     const isInView = useInView(ref);
     const [hasAnimated, setHasAnimated] = useState(false);
 
-    const variants = {
+    const BarVariants = {
+        hidden: { scaleY: 0 },
+        visible: { scaleY: 1 }
+    };
+
+    const TextVariants = {
         hidden: { y: 50, opacity: 0 },
         visible: { y: 0, opacity: 1 }
-    };
+    }
 
     useEffect(() => {
         if (isInView && !hasAnimated) {
@@ -29,16 +34,17 @@ const TextParagraph = (props: TextProps) => {
             <motion.div 
                 ref={ref}
                 className={`${styles.bar}`}
+                style={{ originY: 1 }}
                 animate={hasAnimated ? 'visible' : 'hidden'}
-                variants={variants}
+                variants={BarVariants}
                 transition={{ duration: 0.5, delay: 0.15 }}
             ></motion.div>
             <motion.div 
                 className={styles.content}
                 ref={ref}
                 animate={hasAnimated ? 'visible' : 'hidden'}
-                variants={variants}
-                transition={{ duration: 0.5, delay: 0.25 }}
+                variants={TextVariants}
+                transition={{ duration: 0.5, delay: 0.15 }}
             >
                 <h2>{props.title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: props.text }} />
