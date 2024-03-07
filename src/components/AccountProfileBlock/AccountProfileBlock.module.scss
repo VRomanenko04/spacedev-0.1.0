@@ -2,6 +2,7 @@
     color: #fff;
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     gap: 100px;
     margin-top: 50px;
 }
@@ -38,8 +39,6 @@
         padding-left: 2px;
     }
 }
-
-
 
 .avatar {
     height: 100px;
