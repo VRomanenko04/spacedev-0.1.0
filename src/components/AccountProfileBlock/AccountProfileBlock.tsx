@@ -25,30 +25,38 @@ const AccountProfileBlock = () => {
         }
     }, [username]);
 
+    const saveNewData = () => {
+        if (uid)
+        postUserData(uid, {username: inputValue})
+        .then(() => {
+            dispatch(userDataActions.setUserData({username: inputValue}));
+        })
+        setIsEditing(false);
+    }
+
     const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && uid) {
-            console.log('progress...');
-            postUserData(uid, {username: inputValue})
-            .then(() => {
-                dispatch(userDataActions.setUserData({username: inputValue}));
-            })
-            setIsEditing(false);
+        if (e.key === 'Enter') {
+            saveNewData();
         }
     };
 
+    const handleSubmit = () => {
+        saveNewData();
+    }
+
     return (
         <section className={styles.container}>
-            <div className={styles.info__section}>
-                <div className={styles.title__container} onClick={() => {setIsEditing(true)}}>
-                    <h3 className={styles.title}>Profile</h3>
-                    <p className={styles.edit}>Edit <Image className={styles.pen} src={Pen_icon} alt='White pen icon'/></p>
-                </div>
-                <div className={styles.userinfo__container}>
-                    <p className={styles.pen}>
+            <div className={styles.title__container} onClick={() => {setIsEditing(true)}}>
+                <h3 className={styles.title}>Profile</h3>
+                {!isEditing && <p className={styles.edit}>Edit <Image className={styles.pen} src={Pen_icon} alt='White pen icon'/></p>}
+            </div>
+            <div className={styles.userinfo__container}>
+                <div className={styles.userinfo__list}>
+                    <p className={styles.username}>
                         {isEditing ? (
                             <input 
                                 type="text"
@@ -63,11 +71,21 @@ const AccountProfileBlock = () => {
                         #{userId}
                     </p>
                     <p>{email}</p>
-                    <p>Password: ********</p>
+                    {isEditing ? (
+                        <p>Password: <u style={{cursor: 'pointer'}}>change</u></p>
+                    ) : (
+                        <p>Password: ********</p>
+                    )}
+                    {isEditing && (
+                        <div className={styles.action_links}>
+                            <p className={styles.delete}><u>Delete account</u></p>
+                            <p className={styles.change} onClick={handleSubmit}><u>Save changes</u></p>
+                        </div>
+                    )}
                 </div>
-            </div>
-            <div className={styles.avatar}>
-                {/* Компонент выбора аватара */}
+                <div className={styles.avatar}>
+                    {/* Компонент выбора аватара */}
+                </div>
             </div>
         </section>
     )
