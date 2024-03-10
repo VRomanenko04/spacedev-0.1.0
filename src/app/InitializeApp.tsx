@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import '../lib/firebase/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../lib/redux/store';
 import { initializeIsUserAuth } from '@/lib/redux/features/UserAuth.slice';
-import '../lib/firebase/firebase';
 import { initializeUserData } from '@/lib/redux/features/UserData.slice';
+import { useRouter } from 'next/navigation';
 
 export const initializeApp = async (dispatch: any, userAuth: any) => {
     // Initialize user auth
@@ -35,10 +36,17 @@ export const initializeApp = async (dispatch: any, userAuth: any) => {
 const InitializeApp = ({ children }: {children : React.ReactNode}) => {
     const userAuth = useSelector((state: RootState) => state.authReducer);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     useEffect(() => {
         initializeApp(dispatch, userAuth);
     }, [userAuth, dispatch]);
+
+    useEffect(() => {
+        if (!userAuth.isAuthenticated) {
+            router.push('/'); // Редирект, когда пользователь вышел из системы
+        }
+    }, [userAuth.isAuthenticated]);
 
     return <>{ children }</>
 }
