@@ -1,11 +1,13 @@
 'use client'
 import React from 'react';
-import styles from './Navbar.module.scss';
-import Link from 'next/link';
-import Logo from '../../assets/spaceDev_logo.svg';
-import Image from 'next/image';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
+import Link from 'next/link';
+import LogoutIcon from '@/assets/logout-icon.svg';
+import Logo from '@/assets/spaceDev_logo.svg';
 import { RootState } from '@/lib/redux/store';
+import styles from './Navbar.module.scss';
+import { LogoutUser } from '@/services/LoginService';
 
 const Navbar = () => {
     const isAuth = useSelector((state: RootState) => state.authReducer.isAuthenticated);
@@ -28,6 +30,12 @@ const Navbar = () => {
                         <div className={styles.user_side}>
                             <p className={styles.username}>{username}</p>
                             <div className={styles.avatar}></div>
+                            <Image
+                                src={LogoutIcon} 
+                                alt='Logout white icon'
+                                className={styles.logout}
+                                onClick={LogoutUser}
+                            />
                         </div>
                     </div>
                 )}
