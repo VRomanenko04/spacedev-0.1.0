@@ -45,7 +45,7 @@
     width: 48px;
     height: 48px;
     background-color: #D9D9D9;
-    border-radius: 50%;
+    border-radius: 5px;
 }
 
 .user_side {
@@ -58,4 +58,8 @@
     .username {
         font-weight: 600;
     }
+}
+
+.logout {
+    cursor: pointer;
 }
