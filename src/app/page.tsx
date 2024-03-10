@@ -5,14 +5,15 @@ import HomePlans from "@/components/HomePlans/HomePlans";
 import Footer from "@/components/UI/Footer/Footer";
 import WhySpacedev from "@/components/WhySpacedev/WhySpacedev";
 import { RootState } from "@/lib/redux/store";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
 const Home = () => {
   // redirect если user auth
   const isAuth = useSelector((state: RootState) => state.authReducer.isAuthenticated);
-  if(isAuth) {
-    redirect('/account');
+  const router = useRouter();
+  if(isAuth === true) {
+    router.push('/account');
   } 
 
   return (
