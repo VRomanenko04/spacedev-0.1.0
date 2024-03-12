@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './Login.module.scss';
 import Link from 'next/link';
 import LoginForm from '@/components/LoginForm/LoginForm';
-import AlertModal from '@/components/AlertModal/AlertModal';
+import AlertModal from '@/components/UI/AlertModal/AlertModal';
 
 
 const LoginPage = () => {

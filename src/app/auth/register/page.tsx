@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './Register.module.scss';
 import RegisterForm from '@/components/RegisterForm/RegisterForm';
 import Link from 'next/link';
-import AlertModal from '@/components/AlertModal/AlertModal';
+import AlertModal from '@/components/UI/AlertModal/AlertModal';
 
 
 const RegisterPage = () => {
