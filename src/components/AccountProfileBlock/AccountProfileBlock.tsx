@@ -1,12 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import styles from './AccountProfileBlock.module.scss';
-import Image from 'next/image';
-import Pen_icon from '../../assets/Pen_icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
+import Image from 'next/image';
+import { actions as userDataActions } from '@/lib/redux/features/UserData.slice';
 import { RootState } from '@/lib/redux/store';
 import { postUserData } from '@/services/PostData';
-import { actions as userDataActions } from '@/lib/redux/features/UserData.slice';
+import { updatePassword } from '@/services/UpdatePassword';
+import Pen_icon from '../../assets/Pen_icon.svg';
+import styles from './AccountProfileBlock.module.scss';
 
 
 const AccountProfileBlock = () => {
@@ -44,8 +45,9 @@ const AccountProfileBlock = () => {
         }
     };
 
-    const handleSubmit = () => {
-        saveNewData();
+    const handleResetPassword = () => {
+        if (email)
+        updatePassword(email);
     }
 
     return (
@@ -72,14 +74,14 @@ const AccountProfileBlock = () => {
                     </p>
                     <p>{email}</p>
                     {isEditing ? (
-                        <p>Password: <u style={{cursor: 'pointer'}}>change</u></p>
+                        <p>Password: <u onClick={handleResetPassword} style={{cursor: 'pointer'}}>change</u></p>
                     ) : (
                         <p>Password: ********</p>
                     )}
                     {isEditing && (
                         <div className={styles.action_links}>
                             <p className={styles.delete}><u>Delete account</u></p>
-                            <p className={styles.change} onClick={handleSubmit}><u>Save changes</u></p>
+                            <p className={styles.change} onClick={() => saveNewData()}><u>Save changes</u></p>
                         </div>
                     )}
                 </div>
