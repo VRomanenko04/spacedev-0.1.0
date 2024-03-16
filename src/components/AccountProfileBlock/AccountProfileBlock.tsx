@@ -8,7 +8,8 @@ import { postUserData } from '@/services/PostData';
 import { updatePassword } from '@/services/UpdatePassword';
 import Pen_icon from '../../assets/Pen_icon.svg';
 import styles from './AccountProfileBlock.module.scss';
-import ResetPasswordModal from '../ResetPasswordModal/ResetPasswordModal';
+import { deleteUserAccount } from '@/services/DeleteAcc';
+import ConfirmFunctionalModal from '../ConfirmFunctionalModal/ConfirmFunctionalModal';
 
 
 const AccountProfileBlock = () => {
@@ -20,6 +21,7 @@ const AccountProfileBlock = () => {
     const [inputValue, setInputValue] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [isPasswordModalActive, setIsPasswordModalActive] = useState(false);
+    const [isDeleteAccModalActive, setIsDeleteAccModalActive] = useState(false);
 
     useEffect(() => {
         if (username) {
@@ -84,7 +86,7 @@ const AccountProfileBlock = () => {
                         )}
                         {isEditing && (
                             <div className={styles.action_links}>
-                                <p className={styles.delete}><u>Delete account</u></p>
+                                <p onClick={() => setIsDeleteAccModalActive(true)} className={styles.delete}><u>Delete account</u></p>
                                 <p className={styles.change} onClick={() => saveNewData()}><u>Save changes</u></p>
                             </div>
                         )}
@@ -94,10 +96,15 @@ const AccountProfileBlock = () => {
                     </div>
                 </div>
             </section>
-            <ResetPasswordModal 
-                handleResetPassword={handleResetPassword}
-                isPasswordModalActive={isPasswordModalActive}
-                setIsPasswordModalActive={setIsPasswordModalActive}
+            <ConfirmFunctionalModal
+                handleFunc={handleResetPassword}
+                isModalActive={isPasswordModalActive}
+                setIsModalActive={setIsPasswordModalActive}
+            />
+            <ConfirmFunctionalModal
+            handleFunc={deleteUserAccount}
+            isModalActive={isDeleteAccModalActive}
+            setIsModalActive={setIsDeleteAccModalActive}
             />
         </>
     )
