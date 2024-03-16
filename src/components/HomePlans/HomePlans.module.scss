@@ -76,7 +76,7 @@
 .btn__section {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .btn {
@@ -101,7 +101,11 @@
         background-color: #fff;
         position: absolute;
         bottom: -1px;
-        opacity: 1;
+        opacity: 0;
         transition: opacity 200ms;
     }
+}
+
+.btn:hover .btn__hover::before {
+    opacity: 1;
 }
