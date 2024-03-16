@@ -1,7 +1,7 @@
 import React from 'react';
 import LinkButton from '../UI/LinkButton/LinkButton';
 import BasicIcon from '@/assets/basic-plan-illustration.svg';
-import UltraIcon from '@/assets/ultra-plan-illustration.svg';
+import UltraIcon from '@/assets/ulrta-plan-illustration.svg';
 import styles from './HomePlans.module.scss';
 import Image from 'next/image';
 
