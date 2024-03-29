@@ -35,7 +35,7 @@ export const initializeApp = async (dispatch: any, userAuth: any) => {
 
 const InitializeApp = ({ children }: {children : React.ReactNode}) => {
     const userAuth = useSelector((state: RootState) => state.authReducer);
-    const storedAuth = sessionStorage.getItem('userAuth');
+    const storedAuth = typeof window !== 'undefined' ? sessionStorage.getItem('userAuth') : null;
     const dispatch = useDispatch();
     const router = useRouter();
 
