@@ -7,9 +7,10 @@ type ResetPasswordModalProps = {
     handleFunc: () => void
     isModalActive: boolean
     setIsModalActive: React.Dispatch<React.SetStateAction<boolean>>
+    isDangerous: boolean
 }
 
-const ConfirmFunctionalModal = ({ handleFunc, isModalActive, setIsModalActive }: ResetPasswordModalProps) => {
+const ConfirmFunctionalModal = ({ handleFunc, isModalActive, setIsModalActive, isDangerous }: ResetPasswordModalProps) => {
     return (
         <ConfirmModal
         active={isModalActive}
@@ -22,7 +23,7 @@ const ConfirmFunctionalModal = ({ handleFunc, isModalActive, setIsModalActive }:
             </div>
             <div className={styles.btn__container}>
                 <button className={styles.dis_btn} onClick={() => setIsModalActive(false)}><u>Go back</u></button>
-                <button className={styles.confirm_btn} onClick={handleFunc}><u>Yes, continue</u></button>
+                <button style={isDangerous ? {backgroundColor: '#EA113F'} : {backgroundColor: '#2374BD'}} onClick={handleFunc}><u>Yes, continue</u></button>
             </div>
         </ConfirmModal>
     )
