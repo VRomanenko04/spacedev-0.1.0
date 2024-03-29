@@ -100,11 +100,13 @@ const AccountProfileBlock = () => {
                 handleFunc={handleResetPassword}
                 isModalActive={isPasswordModalActive}
                 setIsModalActive={setIsPasswordModalActive}
+                isDangerous={false}
             />
             <ConfirmFunctionalModal
-            handleFunc={deleteUserAccount}
-            isModalActive={isDeleteAccModalActive}
-            setIsModalActive={setIsDeleteAccModalActive}
+                handleFunc={deleteUserAccount}
+                isModalActive={isDeleteAccModalActive}
+                setIsModalActive={setIsDeleteAccModalActive}
+                isDangerous={true}
             />
         </>
     )
