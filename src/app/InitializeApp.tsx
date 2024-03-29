@@ -35,6 +35,7 @@ export const initializeApp = async (dispatch: any, userAuth: any) => {
 
 const InitializeApp = ({ children }: {children : React.ReactNode}) => {
     const userAuth = useSelector((state: RootState) => state.authReducer);
+    const storedAuth = sessionStorage.getItem('userAuth');
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -43,7 +44,7 @@ const InitializeApp = ({ children }: {children : React.ReactNode}) => {
     }, [userAuth, dispatch]);
 
     useEffect(() => {
-        if (!userAuth.isAuthenticated) {
+        if (!userAuth.isAuthenticated && !storedAuth) {
             router.push('/'); // Редирект, когда пользователь вышел из системы
         }
     }, [userAuth.isAuthenticated]);
